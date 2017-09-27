@@ -1,0 +1,20 @@
+{% extends 'BlogBundle:default:base.html.twig' %}
+{% block body %}
+
+<div class="row">
+    <div class="col-md-6">
+    {% for item in blogEntries %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><a href="{{path('blogEntryShow', {slug: item.slug})}}">{{item.name}}</a></h3>
+            </div>
+            <div class="panel-body">
+                {{item.content|raw}}
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}

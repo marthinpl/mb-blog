@@ -1,0 +1,29 @@
+{% extends 'AdminBundle:default:base.html.twig' %}
+{% block body %}
+    <a href="{{ path('adminPageAdd') }}">Add new entry</a>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Created at</th>
+            <th>Active</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in blogEntries %}
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td><a href="{{ path('adminPageAdd', {id: item.id}) }}">{{ item.name }}</a></td>
+                <td>{{ item.content }}</td>
+                <td>#</td>
+                <td>#</td>
+                {#<td>{{ item.category.name }}</td>#}
+                <td><a href="{{ path('adminPageDestroy', {id: item.id}) }}">delete</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

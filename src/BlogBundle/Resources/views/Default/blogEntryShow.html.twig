@@ -1,0 +1,36 @@
+{% extends 'BlogBundle:default:base.html.twig' %}
+{% block body %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{blogEntry.name}}</h3>
+            </div>
+            <div class="panel-body">
+                {{blogEntry.content|raw}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <h4>Comments</h4>
+    <div class="col-md-4">
+        {% for item in comments %}
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{item.author}} said:</h3>
+            </div>
+            <div class="panel-body">
+                {{item.content|raw}}
+            </div>
+        </div>
+        {% endfor %}
+        {% if comments|length == 0 %}
+            No comments yet
+        {% endif %}
+        <a href="{{ path('commentBlogEntry', {slug: blogEntry.slug}) }}">Add comment</a>
+    </div>
+</div>
+
+{% endblock %}
