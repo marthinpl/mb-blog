@@ -62,9 +62,18 @@ class BlogEntry
 
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->comment = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -93,30 +102,6 @@ class BlogEntry
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set content
-     *
-     * @param string $content
-     *
-     * @return BlogEntry
-     */
-    public function setContent($content)
-    {
-        $this->content = $content;
-
-        return $this;
-    }
-
-    /**
-     * Get content
-     *
-     * @return string
-     */
-    public function getContent()
-    {
-        return $this->content;
     }
 
     /**
@@ -166,12 +151,29 @@ class BlogEntry
     {
         return $this->isActive;
     }
+
     /**
-     * Constructor
+     * Set content
+     *
+     * @param string $content
+     *
+     * @return BlogEntry
      */
-    public function __construct()
+    public function setContent($content)
     {
-        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
     }
 
     /**
@@ -206,40 +208,6 @@ class BlogEntry
     public function getCategories()
     {
         return $this->categories;
-    }
-
-    /**
-     * Add oomment
-     *
-     * @param \BlogBundle\Entity\Comment $oomment
-     *
-     * @return BlogEntry
-     */
-    public function addOomment(\BlogBundle\Entity\Comment $oomment)
-    {
-        $this->oomment[] = $oomment;
-
-        return $this;
-    }
-
-    /**
-     * Remove oomment
-     *
-     * @param \BlogBundle\Entity\Comment $oomment
-     */
-    public function removeOomment(\BlogBundle\Entity\Comment $oomment)
-    {
-        $this->oomment->removeElement($oomment);
-    }
-
-    /**
-     * Get oomment
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getOomment()
-    {
-        return $this->oomment;
     }
 
     /**
