@@ -72,3 +72,12 @@ assetic:
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
+
+# FOS UserBundle
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: AdminBundle\Entity\User
+    from_email:
+            address: mail@heaven.com
+            sender_name: Lorem ipsum
